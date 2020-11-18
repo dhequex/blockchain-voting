@@ -13,8 +13,6 @@ contract Voting {
     event AddedCandidate(uint256 candidateId);
     event NewVote(uint256 candidateId);
 
-    //Candidate[]public candidates;
-
     function vote() public {
         owner = msg.sender;
     }
@@ -30,7 +28,7 @@ contract Voting {
   }
     //This will create a hash to assign an Id to a candidate and an address to a voter
     mapping(uint256 => Candidate) public candidatesStore;
-    mapping(address => Voter) public votersStore;
+    mapping(uint => Voter) public votersStore;
 
     //This defines the Voters structure.
     struct Voter {
@@ -63,7 +61,7 @@ contract Voting {
     ) public {
         if (candidatesStore[candidateIdVote].doesExist = true) {
             voterId = numVoters++;
-            votersStore[ethAddress] = Voter(
+            votersStore[voterId] = Voter(
                 ethAddress,
                 voterId,
                 candidateIdVote
@@ -71,5 +69,29 @@ contract Voting {
             emit NewVote(candidateIdVote);
         }
     }
+
+    function totalVotes(uint candidateId) view public returns(uint){
+        uint numOfVotes = 0;
+        for(uint i = 0; i <numVoters; i++){
+            if(votersStore[i].candidateIdVote == candidateId){
+                numOfVotes++;
+            }
+        }
+        return numOfVotes; 
+    }
+
+    function getNumOfCandidates() public view returns(uint){
+        return numCandidates;
+    }
+
+    function getTotalVoters() public view returns(uint) {
+        return numVoters;
+    }
+
+    function getCandidate(uint candidateId) public view returns(uint, string memory, string memory) {
+            return (candidateId, candidatesStore[candidateId].name, candidatesStore[candidateId].proposal);
+    }
+
+
 }
 
