@@ -6,11 +6,11 @@ contract Voting {
     address public owner;
 
     //These are state variables to store candidates and voters
-    uint256 public numCandidates;
-    uint256 public numVoters;
+    uint256 internal numCandidates;
+    uint256 internal numVoters;
 
     //Events will be used to inform the front-end of activity in our contract
-    event AddedCandidate(uint256 candidateId);
+    event AddedCandidate(uint256 candidateId, string name, string proposal);
     event NewVote(uint256 candidateId);
 
     function vote() public {
@@ -45,13 +45,13 @@ contract Voting {
     }
 
     //Here we add the functionality of our contract.
-    function addCandidate(string memory name, string memory proposal)
+    function addCandidate(string calldata name, string calldata proposal)
         external
         returns (uint256 candidateId)
     {
         candidateId = numCandidates++;
         candidatesStore[candidateId] = Candidate(name, proposal, true);
-        emit AddedCandidate(candidateId);
+        emit AddedCandidate(candidateId, name, proposal);
     }
 
     function addVote(
