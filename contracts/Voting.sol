@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.4.22 <0.8.0;
+pragma solidity >=0.4.21 <0.7.0;
 
 contract Voting {
 	//This declares the Ethereum Address of the contract owner
