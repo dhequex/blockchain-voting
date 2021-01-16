@@ -7,5 +7,7 @@ function AppButton() {
 export default AppButton;
 
 function Button() {
-	return <div className="rectangle-1"></div>;
+    return <>
+    <div className="rectangle-1"></div>
+    <div className="rectangle-2"></div></>;
 }
