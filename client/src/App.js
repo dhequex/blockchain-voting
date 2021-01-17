@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SimpleStorageContract from "./contracts/SimpleStorage.json";
+//import SimpleStorageContract from "./contracts/SimpleStorage.json";
 import Voting from "./contracts/Voting.json";
 import getWeb3 from "./getWeb3";
 import logo from "./Dapp.png";
@@ -43,6 +43,14 @@ class App extends Component {
 
 		// Stores a given value, 5 by default.
 		await contract.methods.vote().send({ from: accounts[0] });
+		const cand1 = await contract.methods
+			.addCandidate("Trump", "proposal 1")
+			.call();
+		const cand2 = await contract.methods
+			.addCandidate("Biden", "proposal 2")
+			.call();
+		console.log(cand1);
+		console.log(cand2);
 
 		// Get the value from the contract to prove it worked.
 		const response = await contract.methods.totalVotes(1).call();
@@ -77,17 +85,12 @@ class App extends Component {
 				<h1>Cast your Vote</h1>
 				<p>Select your party of choice</p>
 				<h2>Voting Dapp - Prototype</h2>
-				<p>
-					If your contracts compiled and migrated successfully, below will show
-					a stored value of 5 (by default).
-				</p>
+				<p>Select the candidate of your choice by clicking on the button.</p>
 				<div>
 					<Button></Button>
 				</div>
-				<p>
-					Try changing the value stored on <strong>line 40</strong> of App.js.
-				</p>
-				<div>The stored value is: {this.state.storageValue}</div>
+				<div></div>
+				<div>Your account ID is: {this.state.accounts}</div>
 			</div>
 		);
 	}
