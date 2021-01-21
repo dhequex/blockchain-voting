@@ -76,7 +76,9 @@ class App extends Component {
 		if (!this.state.web3) {
 			return (
 				<div className="Loading-logo">
+					<div className="Loading-header" />
 					<img src={logo} />
+					<div className="Loading-header" />
 				</div>
 			);
 		}
