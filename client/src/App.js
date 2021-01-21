@@ -2,7 +2,7 @@ import React, { Component } from "react";
 //import SimpleStorageContract from "./contracts/SimpleStorage.json";
 import Voting from "./contracts/Voting.json";
 import getWeb3 from "./getWeb3";
-import logo from "./Dapp.png";
+import logo from "./Dapp-logo-animated.gif";
 import "./App.css";
 import "./button.js";
 import Button from "./button.js";
@@ -76,7 +76,8 @@ class App extends Component {
 		if (!this.state.web3) {
 			return (
 				<div className="Loading-logo">
-					<div className="Loading-header" />
+					<div className="Loading-header"> 
+					<h1>Load your Ethereum Wallet</h1> </div>
 					<img src={logo} />
 					<div className="Loading-header" />
 				</div>
