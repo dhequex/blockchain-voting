@@ -26,4 +26,3 @@ A decentralized application for voting among members of a community.
 
 
 
-[CircleCI]
