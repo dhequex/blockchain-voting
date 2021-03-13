@@ -11,7 +11,7 @@ A decentralized application for voting among members of a community.
 [NPM]
 
 
-## Testing
+## Deployment
 
 [Remix](https://remix.ethereum.org/)
 [MetaMask](https://docs.metamask.io/)
@@ -26,4 +26,3 @@ A decentralized application for voting among members of a community.
 
 
 
-[CircleCI]
